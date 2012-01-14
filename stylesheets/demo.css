@@ -1,0 +1,13 @@
+
+body {
+  text-align: center;
+}
+
+#page {
+  border: solid 1px #000;
+  height: 40px;
+  margin: 100px auto 0;
+  padding: 40px;
+  position: relative;
+  width: 40px;
+}

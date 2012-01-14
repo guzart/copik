@@ -1,0 +1,58 @@
+.copik {
+  display: block;
+  height: 36px;
+  position: relative;
+  width: 36px;
+}
+
+.copik span {
+  background: url(select.png) no-repeat center center;
+  display: block;
+  height: 28px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  width: 28px;
+}
+
+.copik-swatch {
+  border: solid 1px #000;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.copik-swatch li {
+  border: solid 1px #444;
+  float: left;
+  height: 15px;
+  width: 15px;
+}
+
+
+ /** 
+  * UTILITIES
+  * Not necessary if they are already 
+  * implemented in your CSS code
+  */
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+.clearfix {
+  display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+  display: block;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}
