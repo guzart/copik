@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Copik</title>
-  <link rel="stylesheet" type="text/css" href="stylesheets/lib/copik/copik.css" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/copik/copik.css" />
   <link rel="stylesheet" type="text/css" href="stylesheets/demo.css" />
 </head>
 <body>
@@ -43,7 +43,9 @@
 
     // Registrate para el evento de cambio de color.
     cpk.change(function (color) {
-      alert('The new color is: ' + color);
+      if (console && console.log) {
+        console.log('The new color is: ' + color);
+      }
     });
   </script>
 </body>
