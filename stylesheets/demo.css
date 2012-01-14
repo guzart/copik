@@ -9,5 +9,9 @@ body {
   margin: 100px auto 0;
   padding: 40px;
   position: relative;
-  width: 40px;
+  width: 50px;
+}
+
+#page input {
+  width: 50px;
 }

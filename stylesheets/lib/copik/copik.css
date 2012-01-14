@@ -16,17 +16,26 @@
 }
 
 .copik-swatch {
+  background-color: #eee;
   border: solid 1px #000;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
 }
 
 .copik-swatch li {
-  border: solid 1px #444;
   float: left;
-  height: 15px;
-  width: 15px;
+}
+
+.copik-swatch li a {
+  border: solid 1px #fff;
+  display: block;
+}
+
+ul.copik-hidden {
+  display: none;
 }
 
 

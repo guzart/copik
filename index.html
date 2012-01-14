@@ -9,19 +9,42 @@
 <body>
 
   <div id="page">
-    <a class="copik" href="#openSwatch"></a>
-    <ul class="copik-swatch clearfix">
-      <li><a href="#ff0000" style="background-color:#ff0000"></a></li>
-      <li><a href="#ff0000" style="background-color:#ff0000"></a></li>
-      <li><a href="#ff0000" style="background-color:#ff0000"></a></li>
-      <li><a href="#ff0000" style="background-color:#ff0000"></a></li>
-    </ul>
+    <a id="copik1" class="copik" href="#openSwatch"></a>
+    <input id="testInput" name="side1" type="text" value="" />
   </div>
 
   <script src="javascripts/lib/jquery-1.7.1.min.js"></script>
   <script src="javascripts/copik.js"></script>
   <script>
-    var cpk = new Copik('.copik');
+    var cpk = new Copik('#copik1', { 
+      activeColor: 'green',
+      autoOpen: false,
+      closeEffect: {
+        animation: 'fade',
+        duration: 'fast'
+      },
+      closeOnPick: true,
+      colorSize: '20px',
+      colorMargin: '2px',
+      colors: [
+        '#00CED1', '#00BFFF', '#BEBEBE',
+        'gold', 'olive', 'purple',
+        '66CDAA', '48D1CC', 'BC8F8F'
+      ],
+      linkedInput: '#testInput',
+      openEffect: {
+        animation: 'slide',
+        duration: 'fast'
+      },
+      swatchColumns: 3,
+      swatchPosition: 'bottom', // top, right, bottom or left
+      swatchPositionMargin: 0
+    });
+
+    // Registrate para el evento de cambio de color.
+    cpk.change(function (color) {
+      alert('The new color is: ' + color);
+    });
   </script>
 </body>
 </html
