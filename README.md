@@ -71,9 +71,11 @@ The Inline Html Options take precedence over the javascript object options.
 
   * **data-copik-color** The initial color (_activeColor_)
   * **data-copik-swatch** The color swatch to use. (ex 'Copik.Swatches.MySwatch')
+  * **data-copik-swatch-position** The swatch display position.
   * **data-copik-input** The _linkedInput_ selector
 
     <a id="myCopik" href="#openSwatch" 
       data-copik-color="#ff0000" 
       data-copik-swatch="Copik.Swatches.MySwatch"
+      data-copik-swatch-position="right"
       data-copik-input="#myCopikInput"></a>

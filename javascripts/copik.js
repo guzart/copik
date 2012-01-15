@@ -51,6 +51,7 @@
     return {
       activeColor: node.attr('data-copik-color'),
       linkedInput: node.attr('data-copik-input'),
+      swatchPosition: node.attr('data-copik-swatch-position'),
       swatch: node.attr('data-copik-swatch')
     };
   }
