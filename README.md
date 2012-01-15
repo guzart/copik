@@ -13,6 +13,7 @@ Usage
   1. Copy _copik.js_ and _copik_ folder under stylesheets to your web site.
   1. Import them into your document using script and link tags.
   1. Add an anchor tag in your document.
+    `<a id="myAnchorTag" href="#openSwatch"><span></span></a>`
   1. Create a _copik_ object using javascript.
     `var copikObj = new Copik('#myAnchorTag', options);`
 
@@ -33,6 +34,7 @@ Options
   * **linkedInput** {string} A selector for an input field which gets updated after a color pick.
       Useful helper in forms.
   * **openEffect** {object} Sames as *closeEffect* but for the open action.
+  * **swatch** {string} The full path to the color array for the swatch.
   * **swatchColumns** {number} The number of columns in the swatch.
   * **swatchPosition** {string} The position of the swatch in relation to the picker anchor.
       Possible values are _top_, _right_, _bottom_ and _left_.
@@ -49,3 +51,29 @@ Aliases to the color hexadecimal values can be added to the object _Copik.colorN
       blue: '0000ff',
       fuchsia: 'ff00ff'
     };
+
+Color Swatches
+--------------
+
+Set some predefined swatches that you'll be able to reuse in several color pickers.
+
+    Copik.Swatches.MySwatch = [
+      'aqua', 'black', 'blue',
+      '#ff0000', '0000ff', 'ff00ff'
+    ];
+
+
+Inline Html Options
+-------------------
+
+There's also the possibility to set some options directly from the html.
+The Inline Html Options take precedence over the javascript object options.
+
+  * **data-copik-color** The initial color (_activeColor_)
+  * **data-copik-swatch** The color swatch to use. (ex 'Copik.Swatches.MySwatch')
+  * **data-copik-input** The _linkedInput_ selector
+
+    <a id="myCopik" href="#openSwatch" 
+      data-copik-color="#ff0000" 
+      data-copik-swatch="Copik.Swatches.MySwatch"
+      data-copik-input="#myCopikInput"></a>

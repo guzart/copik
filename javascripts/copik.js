@@ -48,11 +48,10 @@
    */
   function getOptionsFromNode(node) {
     node = $(node);
-    var swatchNameSpace = node.attr('data-copik-swatch') || '';
     return {
       activeColor: node.attr('data-copik-color'),
-      colors: eval(swatchNameSpace) || [],
-      linkedInput: node.attr('data-copik-input')
+      linkedInput: node.attr('data-copik-input'),
+      swatch: node.attr('data-copik-swatch')
     };
   }
 
@@ -93,6 +92,7 @@
       opts.colorSize = parseInt(opts.colorSize);
       opts.colorMargin = parseInt(opts.colorMargin);
       opts.swatchPositionMargin = parseInt(opts.swatchPositionMargin);
+      if (opts.swatch) { opts.colors = eval(opts.swatch); }
 
       node
         .addClass('copik')
@@ -299,6 +299,7 @@
       animation: 'slide',
       duration: 'fast'
     },
+    swatch: null,
     swatchColumns: 3,
     swatchPosition: 'bottom', // top, right, bottom or left
     swatchPositionMargin: 0
