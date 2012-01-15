@@ -42,14 +42,33 @@
   }
 
   /**
+   * Gets copik options from an html node.
+   * @param {object} The copik html node
+   * @returns {object} The options data
+   */
+  function getOptionsFromNode(node) {
+    node = $(node);
+    var swatchNameSpace = node.attr('data-copik-swatch') || '';
+    return {
+      activeColor: node.attr('data-copik-color'),
+      colors: eval(swatchNameSpace) || [],
+      linkedInput: node.attr('data-copik-input')
+    };
+  }
+
+  /**
    * Creates a new instance of Copik.
    * If a selector is passes as the node, it will only use the first object in the resulting array
    * @param {object|selector} node The html node that will open up the swatch and display the active color.
    * @param {object} options The settings object
    */
   Copik = function (node, options) {
-    this.opts = $.extend(true, {}, Copik.default, options);
     this.node = $(node).eq(0);
+    this.opts = $.extend(true, {}, 
+      Copik.default, 
+      getOptionsFromNode(this.node),
+      options
+    );
 
     this.setup();
     this.wireEvents();
@@ -193,8 +212,13 @@
     updateSwatchPosition: function () {
       var opts = this.opts,
         node = this.node,
-        nodePosition = node.position(),
+        parentOffset = node.parent().offset(),
+        nodeOffset = node.offset(),
         pickerColorPosition = this.pickerColorNode.position(),
+        nodePosition = {
+          top: nodeOffset.top - parentOffset.top,
+          left: nodeOffset.left - parentOffset.left
+        },
         margin = opts.swatchPositionMargin,
         swatch = this.swatch,
         swatchTop = 0,
@@ -304,5 +328,10 @@
     yellow: 'ffff00',
     'yellow green': '9acd32'
   };
+
+  /**
+   * Preconfigured swatches
+   */
+  Copik.Swatches = {};
 
 }());

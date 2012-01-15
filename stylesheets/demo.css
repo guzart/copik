@@ -1,17 +1,27 @@
 
 body {
-  text-align: center;
 }
 
-#page {
+.exampleContainer {
   border: solid 1px #000;
-  height: 40px;
-  margin: 100px auto 0;
-  padding: 40px;
+  float: left;
+  height: 200px;
+  margin: 80px 0 80px 80px;
   position: relative;
-  width: 50px;
+  width: 200px;
 }
 
-#page input {
-  width: 50px;
+.exampleContainer input {
+  bottom: 5px;
+  color: #888;
+  font: 11px bold verdana,sans-serif;
+  position: absolute;
+  right: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 80px;
+}
+
+.copik {
+  margin: 80px auto;
 }

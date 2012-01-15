@@ -7,16 +7,34 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/demo.css" />
 </head>
 <body>
+  <p>
+    The minimum html template is 
+    <code>&lt;a href=&quot;#openSwatch&quot;&gt;&lt;/a&gt;</code>
+  </p>
 
-  <div id="page">
-    <a id="copik1" class="copik" href="#openSwatch"></a>
+  <p>
+    The recommended html template is 
+    <code>&lt;a href=&quot;#openSwatch&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;</code>
+    The <em>span tag</em> is not required, but it's recommended to avoid a flash during 
+    the initial load.
+  </p>
+
+  <div class="exampleContainer">
+    <a id="copik1" class="copik" href="#openSwatch"><span></span></a>
     <input id="testInput" name="side1" type="text" value="" />
+  </div>
+
+  <div class="exampleContainer">
+    <a id="copik2" class="copik" href="#openSwatch" 
+      data-copik-color="red" data-copik-input="#testInput2" 
+      data-copik-swatch="Copik.Swatches.Default"></a>
+    <input id="testInput2" name="side1" type="text" value="" />
   </div>
 
   <script src="javascripts/lib/jquery-1.7.1.min.js"></script>
   <script src="javascripts/copik.js"></script>
   <script>
-    var cpk = new Copik('#copik1', { 
+    var cpk1 = new Copik('#copik1', { 
       activeColor: 'green',
       autoOpen: false,
       closeEffect: {
@@ -41,12 +59,22 @@
       swatchPositionMargin: 0
     });
 
-    // Registrate para el evento de cambio de color.
-    cpk.change(function (color) {
+    // Register a function for a color change event
+    cpk1.change(function (color) {
       if (console && console.log) {
         console.log('The new color is: ' + color);
       }
     });
+
+    // Setup a global swatch
+    Copik.Swatches.Default = [
+      'gold', 'olive', 'purple',
+      'aqua', 'blue', 'black',
+      'fuchsia', 'green', 'red'
+    ];
+
+    // Initialize the second object, which has an html configuration
+    var cpk2 = new Copik('#copik2');
   </script>
 </body>
 </html
