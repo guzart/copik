@@ -112,7 +112,7 @@
 
       swatch
         .addClass('clearfix copik-swatch')
-        .appendTo(node.parent())
+        .appendTo($('body'))
         .width($('li:first', swatch).outerWidth() * opts.swatchColumns)
         .data('copik', this);
     },
@@ -217,12 +217,11 @@
     updateSwatchPosition: function () {
       var opts = this.opts,
         node = this.node,
-        parentOffset = node.parent().offset(),
         nodeOffset = node.offset(),
         pickerColorPosition = this.pickerColorNode.position(),
         nodePosition = {
-          top: nodeOffset.top - parentOffset.top,
-          left: nodeOffset.left - parentOffset.left
+          top: nodeOffset.top,
+          left: nodeOffset.left
         },
         margin = opts.swatchPositionMargin,
         swatch = this.swatch,
