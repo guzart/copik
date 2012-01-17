@@ -50,6 +50,7 @@
     node = $(node);
     return {
       activeColor: node.attr('data-copik-color'),
+      disabled: /true/i.test(node.attr('data-copik-disabled')),
       linkedInput: node.attr('data-copik-input'),
       swatchPosition: node.attr('data-copik-swatch-position'),
       swatch: node.attr('data-copik-swatch')
@@ -89,6 +90,7 @@
         swatch = (this.swatch = $('<ul></ul>'));
       this.linkedInputNode = $(opts.linkedInput);
       this.observers = [];
+      this.disable(opts.disabled);
 
       opts.colorSize = parseInt(opts.colorSize);
       opts.colorMargin = parseInt(opts.colorMargin);
@@ -153,6 +155,8 @@
      * Opens up the swatch panel
      */
     open: function () {
+      if (this.isDisabled) { return; }
+
       var openEffect = this.opts.openEffect,
         duration = openEffect.duration,
         swatch = this.swatch;
@@ -274,6 +278,14 @@
       this.observers = $.grep(this.observers, function (value) {
         return value != callback;
       });
+    },
+    /**
+     * Disables or enables the control.
+     * @param {bool} isDisabled Indicates if the control should be disabled or not.
+     */
+    disable: function (isDisabled) {
+      this.isDisabled = !!isDisabled;
+      this.node.toggleClass('disabled', this.isDisabled);
     }
   };
 
@@ -295,6 +307,7 @@
       'gold', 'olive', 'purple',
       '66CDAA', '48D1CC', 'BC8F8F'
     ],
+    disabled: false,
     linkedInput: null,
     openEffect: {
       animation: 'slide',

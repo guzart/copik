@@ -31,6 +31,7 @@ Options
   * **colors** {array} The array of colors in the swatch, the values should be a string 
       representing the hexadecimal color value with or without a hash sign.
       It can also be a color name, from the defined color names in Copik.colorNames.
+  * **disabled** {bool} Indicates if the control is disabled at startup.
   * **linkedInput** {string} A selector for an input field which gets updated after a color pick.
       Useful helper in forms.
   * **openEffect** {object} Sames as *closeEffect* but for the open action.
@@ -39,6 +40,17 @@ Options
   * **swatchPosition** {string} The position of the swatch in relation to the picker anchor.
       Possible values are _top_, _right_, _bottom_ and _left_.
   * **swatchPositionMargin** {number} The margin between the swatch and the picker anchor.
+
+Methods
+-------
+
+  * **open** Opens up the swatch panel
+  * **close** Closes the swatch panel
+  * **setColor(color)** Sets the color of the picker.
+  * **getColor** {String} Returns the picked color.
+  * **change(callback)** Binds a function to the change event _fn(color)_
+  * **unbind(callback)** Unbinds the given function from the change events
+  * **disable(isDisabled)** Disables or enables the control
 
 Color Names
 -----------
@@ -63,8 +75,8 @@ Set some predefined swatches that you'll be able to reuse in several color picke
     ];
 
 
-Inline Html Options
--------------------
+Inline Html Options [Optional]
+------------------------------
 
 There's also the possibility to set some options directly from the html.
 The Inline Html Options take precedence over the javascript object options.
@@ -73,9 +85,11 @@ The Inline Html Options take precedence over the javascript object options.
   * **data-copik-swatch** The color swatch to use. (ex 'Copik.Swatches.MySwatch')
   * **data-copik-swatch-position** The swatch display position.
   * **data-copik-input** The _linkedInput_ selector
+  * **data-copik-disabled** Indicates if the controls is disabled at startup.
 
     <a id="myCopik" href="#openSwatch" 
       data-copik-color="#ff0000" 
       data-copik-swatch="Copik.Swatches.MySwatch"
       data-copik-swatch-position="right"
-      data-copik-input="#myCopikInput"></a>
+      data-copik-input="#myCopikInput"
+      data-copik-disabled="true"></a>
