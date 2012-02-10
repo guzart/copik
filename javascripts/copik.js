@@ -260,7 +260,7 @@
     fireChangeEvent: function (color) {
       var observers = this.observers;
       for (var i=0, f=observers.length; i<f; i++) {
-        observers[i](color);
+        observers[i].apply(this, [color]);
       }
     },
     /**
